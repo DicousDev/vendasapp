@@ -1,0 +1,9 @@
+POST http://localhost:8080/api/produtos
+Content-Type application/json
+
+{
+    "descricao": "Impressora",
+    "nome": "Impressora",
+    "preco": 20.5,
+    "sku": "GG11"
+}

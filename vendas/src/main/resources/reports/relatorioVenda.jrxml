@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.5.final using JasperReports Library version 6.21.5-74d586df47b25dbd05bd0957999819196e59934a  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3a0f38de-b5f2-4d49-9b1d-70d0db3017f1">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="banco-de-dados-vendas.jrdax"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="DATA_INICIO" class="java.sql.Date"/>
+	<parameter name="DATA_FIM" class="java.sql.Date"/>
+	<parameter name="CLIENTE_ID" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[select v.id as codigo, c.nome as nomeCliente, v.total as total, v.forma_pagamento from venda as v join cliente as c on c.id=v.cliente_id where 1=1 and (v.cliente_id=$P{CLIENTE_ID} or $P{CLIENTE_ID} is null) and v.data_cadastro between $P{DATA_INICIO} and $P{DATA_FIM} ]]>
+	</queryString>
+	<field name="codigo" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.label" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="nomecliente" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nomecliente"/>
+		<property name="com.jaspersoft.studio.field.label" value="nomecliente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="total" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="total"/>
+		<property name="com.jaspersoft.studio.field.label" value="total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="forma_pagamento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="forma_pagamento"/>
+		<property name="com.jaspersoft.studio.field.label" value="forma_pagamento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="41" width="540" height="39" uuid="225e7666-45e4-4877-8952-6377e580f489"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de vendas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="130" y="0" width="210" height="30" uuid="06dc12ee-7470-40c7-b277-0d4335a1f81a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a0219490-b8d1-47b7-a5ad-4925c0cd7da5"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="0" width="100" height="30" uuid="c7a7b01d-30df-492d-9178-cf3ad9bd266b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d972f4ac-9300-434b-bb76-517bc541528b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[forma_pagamento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="0" width="110" height="30" uuid="b0db5a2e-062d-4c4e-9bdf-611786b037b4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="37ce26cf-913d-4283-abd8-7ade86091a13"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="0" width="120" height="30" uuid="6ccd6fae-32ea-4e07-8120-b7ce59d9551b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b000cd38-d875-410c-a69c-ed1c469a52be"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[codigo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="130" y="0" width="210" height="30" uuid="c567996a-9421-4cf1-9438-c7ed0db5bdcd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a0219490-b8d1-47b7-a5ad-4925c0cd7da5"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nomecliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="0" width="100" height="30" uuid="5bd1b19f-c92f-4483-826d-6360c0cfc6bf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d972f4ac-9300-434b-bb76-517bc541528b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{forma_pagamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="0" width="110" height="30" uuid="2b05e163-b432-43b8-94e8-4ee973ae2b2b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="37ce26cf-913d-4283-abd8-7ade86091a13"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="0" width="120" height="30" uuid="e655ab07-428b-4691-9094-131c32e33e5b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b000cd38-d875-410c-a69c-ed1c469a52be"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
